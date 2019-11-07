@@ -5,16 +5,15 @@ users_blueprint = Blueprint('users',
                             __name__,
                             template_folder='templates')
 
-
+#users/new
 @users_blueprint.route('/new', methods=['GET'])
 def new():
     return render_template('users/new.html')
 
-
+#users/
 @users_blueprint.route('/', methods=['POST'])
-def create():
+def create_users():
     pass
-
 
 @users_blueprint.route('/<username>', methods=["GET"])
 def show(username):
