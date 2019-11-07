@@ -1,1 +1,36 @@
+{% extends "_layout.html"%} {% block content %}
+
+<form>
+  <div class="form-group my-4">
+    {# Username #}
+    <input
+      class="sign-up-form form-control"
+      type="text"
+      placeholder="Username"
+      name="username"
+    />
+  </div>
+
+  <div class="form-group my-4">
+    {# Email #}
+    <input
+      class="sign-up-form form-control"
+      type="email"
+      placeholder="Email"
+      name="email"
+    />
+  </div>
+
+  <div class="form-group my-4">
+    {# Password #}
+    <input
+      class="sign-up-form form-control"
+      type="password"
+      placeholder="Password"
+      name="password"
+    />
+    <small class="form-text text-muted text-justify">Min 8 characters.</small>
+  </div>
+</form>
+
 <h1>Users#new</h1>
