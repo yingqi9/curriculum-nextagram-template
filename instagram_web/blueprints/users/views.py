@@ -31,11 +31,6 @@ def create():
     
     # return redirect(url_for('users.new'))
 
-# @users_blueprint.route('/login', methods=["GET"]) 
-# def show(login):
-#     pass
-
-
 @users_blueprint.route('/', methods=["GET"]) 
 def index():
     return "USERS"

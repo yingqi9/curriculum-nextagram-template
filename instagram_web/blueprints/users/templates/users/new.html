@@ -20,19 +20,26 @@
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
   <div class="form-group my-4">
     <label for="storename">Username</label>
-    <input
-      class="sign-up-form form-control"
-      input type="text"
-      placeholder="username"  
-      name="username"
-    />
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+        <input
+          class="sign-up-form form-control is-valid"
+          id="validationServerUsername"
+          input type="text"
+          placeholder="username"  
+          name="username"
+        />
+      </div>
+    <div class="valid-feedback">
+        Looks good.
+      </div>
   </div>
 
   <div class="form-group my-4">
     <label for="storename">Email</label>
     <input
       class="sign-up-form form-control"
-      placeholder="email"
+      placeholder="Enter email"
       input type="email"
       name="email"
     />
@@ -51,7 +58,7 @@
     <label for="storename">Confirm Password</label>
         <input
         class="sign-up-form form-control"
-        placeholder="confirmpassword"
+        placeholder="confirm password"
         input type="password"
         name="confirmpassword" 
     />
