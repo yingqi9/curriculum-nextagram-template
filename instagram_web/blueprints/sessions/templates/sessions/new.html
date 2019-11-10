@@ -1,11 +1,12 @@
 {% extends "_layout.html" %} {% block content %} 
 
-
 <!-- the log in page -->
 <div class=styled_form_div>
 <h2>Log In</h2>
+
 <form action="{{url_for('sessions.create')}}" method="POST">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
     <div class="form-group my-4">
     <label for="storename">Username</label>
         <input type="text" class="form-control" name="username" placeholder="username" />
@@ -13,13 +14,13 @@
  
     <div class="form-group my-4">
         <label for="storename">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Password">
+        <input type="password" class="form-control" name="password" placeholder=password">
     </div>
 
     <div class="w-100">
         <small class="text-fgreen">
         <a href="" class="reset-password m-1">
-          Help! I forgot my password!</small>
+          Help! Forgot password.</small>
         </a>
       </div>
 

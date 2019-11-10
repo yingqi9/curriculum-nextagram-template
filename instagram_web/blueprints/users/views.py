@@ -21,7 +21,7 @@ def create():
     hashed_password = generate_password_hash(password)
     formsign = User(username=username, email=email, password=hashed_password) 
     if formsign.save():
-        flash('Succesfully Sign up!') 
+        flash('Succesfully sign up!') 
         return redirect(url_for('users.new'))
     else: 
         # flash('Registration failed. Username has been taken!!')
