@@ -1,13 +1,29 @@
 {% extends "_layout.html"%} {% block content %}
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+{% for error in errors if errors|length > 0 %}
+<div class="alert-danger">{{error}}</div>
+{% endfor %}
+
 <!-- the sign up page -->
-<form action="{{url_for('create_user')}}" method="POST">
+<div class=styled_form_div>
+<h1>Sign Up</h1>
+<form action="{{url_for('users.create')}}" method="POST">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
   <div class="form-group my-4">
     <label for="storename">Username</label>
     <input
       class="sign-up-form form-control"
       input type="text"
-      placeholder="username"
+      placeholder="username"  
       name="username"
     />
   </div>
@@ -31,8 +47,24 @@
       name="password"
     />
     <small class="form-text text-muted text-justify">Min 8 characters.</small>
+  <div class="form-group my-4">
+    <label for="storename">Confirm Password</label>
+        <input
+        class="sign-up-form form-control"
+        placeholder="confirmpassword"
+        input type="password"
+        name="confirmpassword" 
+    />
   </div>
+
+  <div class="mb-3">
+      <input type="checkbox" class="" name="privacy" value="true"/>
+      <small class="text-muted" for="privacy" value="true">Make your account private</small>
+    </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
+
 
 {% endblock %}

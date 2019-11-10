@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, url_for, Flask, redirect, flash
+from models.user import *
+from werkzeug.security import generate_password_hash
 
 
 users_blueprint = Blueprint('users',
@@ -10,19 +12,38 @@ users_blueprint = Blueprint('users',
 def new():
     return render_template('users/new.html')
 
-#users/
+#users/sign up page
 @users_blueprint.route('/', methods=['POST'])
-def create_users():
-    pass
+def create():
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    hashed_password = generate_password_hash(password)
+    formsign = User(username=username, email=email, password=hashed_password) 
+    if formsign.save():
+        flash('Succesfully Sign up!') 
+        return redirect(url_for('users.new'))
+    else: 
+        # flash('Registration failed. Username has been taken!!')
+        return render_template('/users/new.html',errors=formsign.errors)
+
+    # formsign.save()
+    
+    # return redirect(url_for('users.new'))
+
+# @users_blueprint.route('/login', methods=["GET"]) 
+# def show(login):
+#     pass
+
+
+@users_blueprint.route('/', methods=["GET"]) 
+def index():
+    return "USERS"
+
 
 @users_blueprint.route('/<username>', methods=["GET"])
 def show(username):
     pass
-
-
-@users_blueprint.route('/', methods=["GET"])
-def index():
-    return "USERS"
 
 
 @users_blueprint.route('/<id>/edit', methods=['GET'])
