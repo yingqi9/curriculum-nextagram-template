@@ -22,13 +22,13 @@ def create():
         result = check_password_hash(user.password, request.form.get('password'))
 
         if result: 
-            # session["user_id"] = user.id
+            session["user_id"] = user.id
             # login_user(user)
             flash('Succesfully log in!')
             return redirect (url_for('sessions.new'))
         else: 
             flash('Incorrect password.')
-            return render_template('/sessions/new.html') 
+            return render_template('/sessions/new.html')
 
 #if no user
     else: 
@@ -37,7 +37,9 @@ def create():
 
 @sessions_blueprint.route('/logout', methods=['GET'])
 def destroy():
-    # session.pop('username', None)
+    session.pop('user_id', None)
     flash('Successfully logged out.', 'success') 
     return redirect('sessions/new.html') 
+
+ 
 
