@@ -1,5 +1,6 @@
-from models.base_model import BaseModel
 import peewee as pw
+from models.base_model import BaseModel
+from werkzeug.security import generate_password_hash
 
 
 class User(BaseModel):

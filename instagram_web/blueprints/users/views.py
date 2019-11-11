@@ -19,10 +19,10 @@ def create():
     email = request.form.get('email')
     password = request.form.get('password')
     hashed_password = generate_password_hash(password)
-    formsign = User(username=username, email=email, password=hashed_password) 
+    formsign = User(username=username, email=email, password=hashed_password)
     if formsign.save():
         flash('Succesfully sign up!') 
-        return redirect(url_for('users.new'))
+        return redirect(url_for('users.new')) 
     else: 
         # flash('Registration failed. Username has been taken!!')
         return render_template('/users/new.html',errors=formsign.errors)

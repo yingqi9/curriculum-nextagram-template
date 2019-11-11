@@ -1,6 +1,6 @@
-from flask import Blueprint, Flask, abort, flash, redirect, render_template, request, url_for, session
+from flask import Blueprint, Flask, flash, redirect, render_template, request, url_for, session
 from models.user import User
-from from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash
 
 
 sessions_blueprint = Blueprint('sessions',
@@ -15,12 +15,25 @@ def new():
 @sessions_blueprint.route('/', methods=['POST'])
 def create():
     username = request.form.get('username')
-    password_to_check = request.form['password']
-    hashed_password = user.hashed_password
-    
+    password = request.form.get('password')
+    user = User.get_or_none(username=username)
+    if user: #if have user 
+        result = check_password_hash(user.password, reuqest.form.get('password'))
+        print(result)
+        if result: 
+            session["user_id"] = user.id
+            flash('Succesfully log in!')
+            return redirect (url_for('sessions/new')
+        else: 
+            flash('Incorrect password.')
+            return render_template('/sessions/new.html') 
 
+    else: #if no user
+        flash('No user found')
+        return render_template('/sessions/new.html') 
 
-@sessions_blueprint.route('/delete', methods=['GET'])
-def delete():
-     flash('Successfully logged out')
-     return render_template('sessions/new.html')
+@sessions_blueprint.route('/logout', methods=['GET'])
+def destroy():
+    session.pop('username', None)
+    flash('Successfully logged out.', 'success') 
+    return render_template('sessions/new.html') 
