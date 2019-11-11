@@ -1,6 +1,8 @@
 from flask import Blueprint, Flask, flash, redirect, render_template, request, url_for, session
+# from flask_login import login_user, logout_user
 from models.user import User
 from werkzeug.security import check_password_hash
+
 
 
 sessions_blueprint = Blueprint('sessions',
@@ -15,7 +17,7 @@ def new():
 @sessions_blueprint.route('/', methods=['POST'])
 def create():
     username = request.form.get('username')
-    user = User.get_or_none(username=username)
+    user = User.get_or_none(username=username) 
 
 #if have user 
     if user: 
