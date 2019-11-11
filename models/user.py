@@ -14,6 +14,11 @@ class User(BaseModel):
 
         if duplicate_name:
             self.errors.append('Registraion failed. Username has already been taken!')
-
         if duplicate_email:
             self.errors.append('Email address already in used!')
+        # if len(self.password) < 8:
+        #     self.errors.append('Password must not less than 8 characters')
+        # if len(self.password) > 8:
+        #     self.errors.append('Password must more than 25 characters')
+        # else: 
+        #     self.password=generate_password_hash(self.password)

@@ -5,7 +5,7 @@
 <h2>Log In</h2>
 
 <form action="{{url_for('sessions.create')}}" method="POST">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
 
     <div class="form-group my-4">
     <label for="storename">Username</label>
@@ -14,7 +14,7 @@
  
     <div class="form-group my-4">
         <label for="storename">Password</label>
-        <input type="password" class="form-control" name="password" placeholder=password">
+        <input type="password" class="form-control" name="password" placeholder="password">
     </div>
 
     <div class="w-100">
@@ -24,9 +24,9 @@
         </a>
       </div>
 
-   <button class="forest-green text-white mt-4 mb-1" type="submit">Log In</button>    
+   <button class="btn btn-primary mt-4 mb-1" type="submit">Log In</button>    
 </form>
-</div>
+</div> 
 
 
 {% endblock %}

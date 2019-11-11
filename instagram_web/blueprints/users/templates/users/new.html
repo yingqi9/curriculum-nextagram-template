@@ -1,17 +1,6 @@
 {% extends "_layout.html" %} {% block content %}
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert-success">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 
-
-{% for error in errors if errors|length > 0 %}
-<div class="alert-danger">{{error}}</div>
-{% endfor %}
 
 <!-- the sign up page -->
 <div class=styled_form_div>
