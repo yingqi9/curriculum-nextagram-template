@@ -16,7 +16,6 @@ def new():
 def create():
     username = request.form.get('username')
     user = User.get_or_none(username=username) 
-
 #if have user 
     if user: 
         result = check_password_hash(user.password, request.form.get('password'))
@@ -28,7 +27,7 @@ def create():
             return redirect (url_for('sessions.new'))
         else: 
             flash('Incorrect password.')
-            return render_template('/sessions/new.html')
+            return render_template('sessions/new.html')
 
 #if no user
     else: 
@@ -40,4 +39,4 @@ def destroy():
     # session.pop('user_id', None)
     logout_user()
     flash('Successfully logged out.', 'success') 
-    return redirect(url_for('sessions/new.html'))
+    return redirect(url_for('sessions.new'))

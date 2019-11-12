@@ -5,9 +5,9 @@ from werkzeug.security import generate_password_hash
 from flask_login import UserMixin
 
 class User(UserMixin,BaseModel):
-    username = pw.CharField(unique=False)
+    username = pw.CharField(unique=True)
     password = pw.CharField()
-    email = pw.CharField(unique=False)
+    email = pw.CharField(unique=True)
 
     # def save(self, *args, **kwargs):
     # self.errors = []
