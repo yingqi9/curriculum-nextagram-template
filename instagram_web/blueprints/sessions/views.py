@@ -1,9 +1,7 @@
 from flask import Blueprint, Flask, flash, redirect, render_template, request, url_for, session
-# from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user
 from models.user import User
 from werkzeug.security import check_password_hash
-
-
 
 sessions_blueprint = Blueprint('sessions',
                                 __name__, 
@@ -24,8 +22,8 @@ def create():
         result = check_password_hash(user.password, request.form.get('password'))
 
         if result: 
-            session["user_id"] = user.id
-            # login_user(user)
+            # session["user_id"] = user.id
+            login_user(user)
             flash('Succesfully log in!')
             return redirect (url_for('sessions.new'))
         else: 
@@ -39,9 +37,7 @@ def create():
 
 @sessions_blueprint.route('/logout', methods=['GET'])
 def destroy():
-    session.pop('user_id', None)
+    # session.pop('user_id', None)
+    logout_user()
     flash('Successfully logged out.', 'success') 
-    return redirect('sessions/new.html') 
-
- 
-
+    return redirect(url_for('sessions/new.html'))
