@@ -8,17 +8,8 @@ class User(UserMixin,BaseModel):
     username = pw.CharField(unique=True)
     password = pw.CharField()
     email = pw.CharField(unique=True)
-    profile_picture = pw.TextField(null=True)
+    # profile_picture = pw.TextField(null=True)
 
-    # def save(self, *args, **kwargs):
-    # self.errors = []
-    # self.validate()
-
-    # if len(self.errors) == 0:
-    #     self.updated_at = datetime.datetime.now()
-    #     return super(BaseModel, self).save(*args, **kwargs)
-    # else:
-    #     return 0
 
     def validate(self):
         duplicate_name = User.get_or_none(User.username == self.username)
