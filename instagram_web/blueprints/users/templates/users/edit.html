@@ -6,6 +6,19 @@
 
 {% block content %}
 
+<div class="w-100 d-flex flex-column align-items-center my-3">
+
+    <h1>Upload Your Profile Picture</h1>
+    <form action="/" method="POST" enctype="multipart/form-data"> 
+        <label for="user_file">Upload Your File</label>
+        <br></br>
+        <input type="file" name="user_file"> 
+        <br></br>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+
 <form action="{{url_for('users.update', id=current_user.id)}}" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
 
@@ -15,7 +28,8 @@
             <label for="name">Username</label>
             <input type="text"
             required name="username"
-            class="form-control"/>
+            class="form-control"
+            placeholder="username"/>
         </div>
         
         <div class="form-group">

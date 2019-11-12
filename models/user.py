@@ -8,6 +8,7 @@ class User(UserMixin,BaseModel):
     username = pw.CharField(unique=True)
     password = pw.CharField()
     email = pw.CharField(unique=True)
+    profile_picture = pw.TextField(null=True)
 
     # def save(self, *args, **kwargs):
     # self.errors = []
