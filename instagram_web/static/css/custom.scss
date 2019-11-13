@@ -1,8 +1,11 @@
+$bg-color: pink;
+
 body {
   margin: 0;
   padding-bottom: 15px;
   position: relative;
   min-height: 100vh;
+  background: $bg-color;
 }
 
 footer {
@@ -20,7 +23,7 @@ footer a {
   color: #303030;
 }
 
-.styled_form_div{
+.styled_form_div {
   width: 600px;
   margin: 30px auto;
   text-align: left;

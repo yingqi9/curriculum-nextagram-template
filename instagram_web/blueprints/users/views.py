@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, url_for, Flask, redirect,
 from models.user import *
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
+from werkzeug.utils import secure_filename
+from instagram_web.util.helpers.uploads import *
 
 
 users_blueprint = Blueprint('users',
@@ -73,32 +75,19 @@ def update(id):
 
 @users_blueprint.route('/<id>/picture', methods=['POST'])
 @login_required
-def update_picture():
-    pass
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def update_picture(id):
+    file = request.files["user_file"]
+    if not file:
+        flash("Please choose a file.", "danger")
+        return render_template('images/new.html')
+    file.filename = secure_filename(file.filename)
+    if not output:
+        flash("Unable to upload file, try again.", "danger")
+        return render_template('images/new/html')
+    else:
+        user = User.update(profile_picture = output).where(User.id == current_user.id)
+        user.execute()
+        print(output)
+        flash("Profile picture updated", "success")
+        return redicrect(url_for('users.edit',username=current_user.name)
+        
