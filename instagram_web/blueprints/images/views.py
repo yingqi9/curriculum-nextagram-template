@@ -9,8 +9,9 @@ images_blueprint = Blueprint('images',
                             __name__, 
                             template_folders='templates')
 
+
 #upload page
 @images_blueprint.route('/new', methods=['POST'])
 @login_required
-def update_picture(id): 
+def up
     

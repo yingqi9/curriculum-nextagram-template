@@ -21,7 +21,7 @@ def create():
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
-    hashed_password = generate_password_hash(passwor_d)
+    hashed_password = generate_password_hash(password)
     formsign = User(username=username, email=email, password=hashed_password)
     if formsign.save():
         flash('Succesfully sign up!') 
