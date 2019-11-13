@@ -21,7 +21,7 @@ def create():
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
-    hashed_password = generate_password_hash(password)
+    hashed_password = generate_password_hash(passwor_d)
     formsign = User(username=username, email=email, password=hashed_password)
     if formsign.save():
         flash('Succesfully sign up!') 
@@ -86,8 +86,9 @@ def update_picture(id):
         flash("Unable to upload file, try again.", "danger")
         return render_template('images/new/html')
     else:
-        user = User.update(profile_picture = output).where(User.id == current_user.id)
+        user = User.update(profile_image_url = output).where(User.id == current_user.id)
         user.execute()
         print(output)
         flash("Profile picture updated", "success")
+        
         return redirect(url_for('users.edit',id=id)) 

@@ -8,7 +8,7 @@ class User(UserMixin,BaseModel):
     username = pw.CharField(unique=True)
     password = pw.CharField()
     email = pw.CharField(unique=True)
-    profile_picture = pw.TextField(null=True)
+    profile_image_url = pw.TextField(null=True)
 
 
     def validate(self):

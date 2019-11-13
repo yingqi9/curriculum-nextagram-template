@@ -11,7 +11,7 @@
     <h1>Upload Your Profile Picture</h1>
     <form action="{{url_for('users.update_picture', id=current_user.id)}}" method="POST" enctype="multipart/form-data"> 
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
-
+        <img src={{current_user.profile_image_url}} />
         <label for="user_file">Upload Your File</label>
         <br></br>
         <input type="file" name="user_file"> 
@@ -19,7 +19,6 @@
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
 </div>
-
 
 <form action="{{url_for('users.update', id=current_user.id)}}" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
