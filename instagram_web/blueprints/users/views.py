@@ -70,4 +70,35 @@ def update(id):
     else:
         flash(f"You are not allowed to update {user.name} profile", "danger")
         return render_template("users/edit.html", user=user)
+
+@users_blueprint.route('/<id>/picture', methods=['POST'])
+@login_required
+def update_picture():
+    pass
+
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

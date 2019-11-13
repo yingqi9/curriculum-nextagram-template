@@ -28,4 +28,4 @@ def upload_file_to_s3(file, acl="public-read"): #access to bucket list
     except Exception as e:
         # This is a catch all exception, edit this part to fit your needs.
         print("Something Happened: ", e) 
-        return e
+        return e 
