@@ -7,12 +7,11 @@
 {% block content %}
 
 <div class="w-100 d-flex flex-column align-items-center my-3">
-
     <h1>Upload Your Profile Picture</h1>
     <form action="{{url_for('users.update_picture', id=current_user.id)}}" method="POST" enctype="multipart/form-data"> 
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
         <img src={{current_user.profile_image_url}} />
-        <label for="user_file">Upload Your File</label>
+        <!-- <label for="user_file">Upload Your File</label> -->
         <br></br>
         <input type="file" name="user_file"> 
         <br></br>
@@ -24,33 +23,35 @@
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
 
 <div class="w-100 d-flex flex-column align-items-center my-3">
+
     <h1>Update {{user.username}}'s Profile</h1>
-        <div class= "form-group">
-            <label for="name">Username</label> 
-            <input type="text"
-            required name="username"
-            class="form-control"
-            placeholder="username"/>
-        </div>
-        
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" 
-            class="form-control" 
-            placeholder="Enter email" />
-        </div>
-        
-        <div class="form-group">
-            <label for="password">Password</label> 
-            <input
-            type="password"
-            class="form-control"
-            placeholder="Password"
-            /> 
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Update</button> 
+    <div class= "form-group">
+        <label for="name">Username</label> 
+        <input type="text"
+        required name="username"
+        class="form-control"
+        placeholder="username"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" 
+        class="form-control" 
+        placeholder="Enter email" />
+    </div>
+    <!--  -->
+    <div class="form-group">
+        <label for="password">Password</label> 
+        <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        /> 
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Update</button> 
     </form> 
+    </div>
 </div>
 
 {% endblock %}

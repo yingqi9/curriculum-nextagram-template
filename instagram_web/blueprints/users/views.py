@@ -13,7 +13,7 @@ users_blueprint = Blueprint('users',
 #users/new
 @users_blueprint.route('/new', methods=['GET'])
 def new():
-    return render_template('users/new.html')
+    return render_template('users/new.html') 
 
 #users/sign up page
 @users_blueprint.route('/', methods=['POST'])
