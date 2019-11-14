@@ -1,5 +1,5 @@
 from flask import Blueprint, Flask, flash, redirect, render_template, request, url_for, session
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from models.user import User
 from werkzeug.security import check_password_hash
 
@@ -24,7 +24,7 @@ def create():
             # session["user_id"] = user.id
             login_user(user)
             flash('Succesfully log in!')
-            return redirect (url_for('sessions.new')) 
+            return redirect (url_for('users.edit', id=current_user))
         else: 
             flash('Incorrect password.')
             return render_template('sessions/new.html')
