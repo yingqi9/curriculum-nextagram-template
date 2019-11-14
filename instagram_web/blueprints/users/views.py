@@ -58,11 +58,12 @@ def edit(id):
 @users_blueprint.route('/<id>', methods=['POST']) #update profile
 @login_required
 def update(id):
-    user = user.get_by_id(id)
+    user = User.get_by_id(id)
     if current_user == user:
         user.username = request.form.get('username')
         user.email = request.form.get('email')
-        user.password = request.form.get('password')
+        user.password = generate_password_hash(request.form.get('password'))
+        
         if user.save():
             flash("Succesfully update", "success")
             return redirect(url_for('users.edit', id=id))
@@ -90,5 +91,5 @@ def update_picture(id):
         user.execute()
         print(output)
         flash("Profile picture updated", "success")
-        
+    
         return redirect(url_for('users.edit',id=id)) 

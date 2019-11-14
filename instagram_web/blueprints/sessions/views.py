@@ -24,7 +24,7 @@ def create():
             # session["user_id"] = user.id
             login_user(user)
             flash('Succesfully log in!')
-            return redirect (url_for('sessions.new'))
+            return redirect (url_for('sessions.new')) 
         else: 
             flash('Incorrect password.')
             return render_template('sessions/new.html')
@@ -39,4 +39,4 @@ def destroy():
     # session.pop('user_id', None)
     logout_user()
     flash('Successfully logged out.', 'success') 
-    return redirect(url_for('sessions.new'))
+    return redirect(url_for('sessions.new')) 
