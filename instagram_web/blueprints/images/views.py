@@ -13,5 +13,5 @@ images_blueprint = Blueprint('images',
 #upload page
 @images_blueprint.route('/new', methods=['POST'])
 @login_required
-def up
+
     
