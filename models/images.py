@@ -8,7 +8,7 @@ from config import Config
 
 
 class Images(BaseModel):
-    username = pw.ForeignKeyField(User, backref="Images")
+    username = pw.ForeignKeyField(User, backref="images")
     img_file = pw.CharField(null=True)
 
     @hybrid_property

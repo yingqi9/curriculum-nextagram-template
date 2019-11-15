@@ -14,6 +14,7 @@ images_blueprint = Blueprint('images',
 
 @images_blueprint.route('/new', methods=['GET'])
 def new():
+    user = User.get_by_id(current_user.id)
     return render_template('images/new.html') 
 
 
@@ -23,7 +24,7 @@ def new():
 def create():
     file = request.files["user_file"] #if no file in request
     if not file:
-        flash("Please choose a photo.", "danger")
+        flash("Please choose a photo to upload.", "danger")
         return render_template('images/new.html')
     file.filename = secure_filename(file.filename)
     output = upload_file_to_s3(file) #import from helpers.py
@@ -37,7 +38,7 @@ def create():
         flash("Picture uploaded succesfully", "success")
 
     if images.save():
-        flash("Done","success") 
+        flash("Posted!","success") 
         return redirect(url_for('images.new')) 
     else: 
         flash("Upload failed", "danger")

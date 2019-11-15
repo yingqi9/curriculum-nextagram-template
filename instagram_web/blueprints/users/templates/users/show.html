@@ -3,12 +3,17 @@
 {% block title %}
     Profile page
 {% endblock %}
+
 {% block content %}
+<br>
+<div class="col-sm-4">
+    <img src="{{pro_pic}}" alt="profilepicture">
+</div>
+</br>
+<br></br>
 
-<img src="{{pro_pic}}" alt="profilepicture">
-
-
-
-
+{% for image in images %}
+<img src="{{image.profile_image_url}}" alt="img_file"/>
+{% endfor %}
 
 {% endblock %}
