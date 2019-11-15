@@ -41,8 +41,7 @@ def index():
 
 @users_blueprint.route('/<username>', methods=["GET"])
 def show(username):
-    pass
-
+    return render_template("users/show.html",pro_pic=current_user.profile_picture)
 
 @users_blueprint.route('/<id>/edit', methods=['GET']) #edit profile 
 @login_required

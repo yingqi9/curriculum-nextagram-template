@@ -3,12 +3,19 @@ import peewee as pw
 from models.base_model import BaseModel
 from werkzeug.security import generate_password_hash
 from flask_login import UserMixin
+from config import Config
+from playhouse.hybrid import hybrid_property
+
 
 class User(UserMixin,BaseModel):
     username = pw.CharField(unique=True)
     password = pw.CharField()
     email = pw.CharField(unique=True)
     profile_image_url = pw.TextField(null=True)
+
+    @hybrid_property
+    def profile_picture(self):
+      return Config.S3_LOCATION + self.profile_image_url
 
 
     def validate(self):
