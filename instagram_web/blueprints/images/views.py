@@ -34,10 +34,10 @@ def create():
         uploadphoto = Images(username=User.id, img_file=file)
         images = Images(username_id=current_user.id, img_file = output)
         print(output) 
-        flash("Picture uploaded", "success")
+        flash("Picture uploaded succesfully", "success")
 
     if images.save():
-        flash("Succesfully uploaded","success") 
+        flash("Done","success") 
         return redirect(url_for('images.new')) 
     else: 
         flash("Upload failed", "danger")
