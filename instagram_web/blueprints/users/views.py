@@ -11,7 +11,7 @@ users_blueprint = Blueprint('users',
                             template_folder='templates')
 
 #users/new
-@users_blueprint.route('/new', methods=['GET'])
+@users_blueprint.route('/new', methods=['GET']) 
 def new():
     return render_template('users/new.html') 
 
