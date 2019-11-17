@@ -1,6 +1,6 @@
-from flask_wtf.csrf import CSRFProtect
 import os
 import config
+from flask_wtf.csrf import CSRFProtect
 from flask import Flask
 from models.base_model import db
 from flask_login import LoginManager
@@ -19,11 +19,7 @@ else:
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'sessions.new' 
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(User.id==user_id)
+# login_manager.login_view = 'sessions.new' 
 
 @app.before_request
 def before_request():
@@ -36,3 +32,7 @@ def _db_close(exc):
         print(db)
         print(db.close())
     return exc
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get_by_id(user_id)

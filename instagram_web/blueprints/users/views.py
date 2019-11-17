@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, Flask, redirect, flash
-from models.user import *
+from models.user import User
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename 
@@ -27,7 +27,6 @@ def create():
         flash('Succesfully sign up!') 
         return redirect(url_for('users.new')) 
     else: 
-        flash('Registration failed. Username has been taken!!')
         return render_template('/users/new.html',errors=formsign.errors)
 
     # formsign.save()
