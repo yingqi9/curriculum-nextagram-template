@@ -6,14 +6,16 @@
 
 {% block content %}
 <br>
-<div class="col-sm-4">
+<div class="col-sm-8">
     <img src="{{pro_pic}}" alt="profilepicture">
-</div>
 </br>
 <br></br>
 
 {% for image in images %}
-<img src="{{image.profile_image_url}}" alt="img_file"/>
+    <div class="col-sm-4 mb-2 m-2 p-2 vw-80">
+        <img src="{{image.profile_image_url}}" alt="img_file" class="img-fluid feed-picture"/>
+    </div>    
+</div>
 {% endfor %}
 
 {% endblock %}
