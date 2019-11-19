@@ -1,1 +1,1 @@
-git remote add production https://git.heroku.com/safe-taiga-43616.git
+web: python migrate.py; gunicorn start:app --preload
