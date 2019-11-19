@@ -4,8 +4,6 @@ from flask_login import current_user, login_required
 from config import Config
 from models.donations import Donation
 
-
-
 donations_blueprint = Blueprint('donations', 
                                 __name__, 
                                 template_folder='templates')
