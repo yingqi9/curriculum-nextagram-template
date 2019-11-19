@@ -1,1 +1,1 @@
-web: python migrate.py; gunicorn start:app --preload
+web: flask migrate.py; gunicorn start:app --preload
