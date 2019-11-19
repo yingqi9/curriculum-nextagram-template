@@ -5,6 +5,12 @@
 <form id="donation_form" action="{{url_for('donations.create')}}" method="POST">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
     <input id="nonce_input" type="hidden" name='nonce' />
+    <label
+      for="donations"
+      style="font-family: sans-serif;">Amount of donations</label>
+      <input type="amount" class="form-control" name="donations" placeholder="1">
+    </div>
+    <br />
 </form>
 <button class="btn btn-info" id="submit-button">
     Request payment method

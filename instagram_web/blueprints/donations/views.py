@@ -2,7 +2,7 @@ import braintree
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 from config import Config
-# from models.donations import Donations
+from models.donations import Donation
 
 
 
