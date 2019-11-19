@@ -20,12 +20,35 @@ gateway = braintree.BraintreeGateway(
 )
 
 @donations_blueprint.route('/pay', methods=['GET'])
+@login_required
 def show(): 
     return render_template('donations/new.html')
 
 
 @donations_blueprint.route('/paycheckout', methods=['POST'])
+@login_required
 def new(): 
     client_token = gateway.client_token.generate()
 
     return render_template('donations/new.html', client_token=client_token)
+
+
+@donations_blueprint.route('/pay', methods=['POST'])
+@login_required
+def create():
+    
+    result = gateway.transaction.sale({
+        "amount": "100.00",
+        "payment_method_nonce": request.form["nonce"],
+        "options": {
+        "submit_for_settlement": True
+        }
+    })
+
+    if result.is_success:
+        flash("Successfully donated!", "success")
+        return redirect(url_for('images.new'))
+    
+    else:
+        flash("Transaction error has occured, please try again.", "danger")
+        return render_template('donations/new.html')

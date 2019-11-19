@@ -42,5 +42,5 @@ def create():
         return redirect(url_for('images.new')) 
     else: 
         flash("Upload failed", "danger")
-        return render_template('/images/new.html')
+        return render_template('images/new.html')
 
