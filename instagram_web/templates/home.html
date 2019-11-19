@@ -1,16 +1,37 @@
-{% extends "_layout.html" %}
+{% extends "_layout.html" %} {% block title %} Homepage {% endblock %} {% block
+header %} {% endblock %} {% block content %} {% if current_user.is_authenticated
+%}
+<div class="header mb-5">
+  <h1>{{current_user.username}}'s Homepage</h1>
+</div>
 
-{% block title %}
-  Homepage
-{% endblock %}
-
-{% block header %}
-{% endblock %}
-
-{% block content %}
+{% else %}
+<div class="header mb-5">
   <h1>Homepage</h1>
-  <!-- <div id="home=page">
-    <div class="box">this is the box from homepage</div>
-  </div> -->
+</div>
+
+{% endif %}
+
+<div class="row">
+  {% for user in users %}
+
+  <div class="col-6 text-center mb-3">
+    <img
+      src="{{user.profile_image_url}}"
+      style="border-radius: 50%; height: 150px; width: 150px;"
+      alt="profile-image"
+      class="mb-3"
+    />
+    <span class="d-block">
+      <a
+        href="{{url_for('images.img_file', id=user.id)}}"
+        style="color: black;text-decoration: underline;"
+        >{{user.username}}</a
+      >
+    </span>
   </div>
+
+  {% endfor %}
+</div>
+
 {% endblock %}

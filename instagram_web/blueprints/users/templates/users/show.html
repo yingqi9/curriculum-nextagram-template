@@ -6,22 +6,29 @@
 
 {% block content %}
 <br>
-<div class="col-sm-8">
-    <img src="{{pro_pic}}" alt="profilepicture">
-</br>
-<br></br>
-
-{% for image in images %}
-    <div class="col-sm-4 mb-2 m-2 p-2 vw-80">
-        <img src="{{image.profile_image_url}}" alt="img_file" class="img-fluid feed-picture"/>
-    </div>    
-
-    <form action="{{url_for('donations.new')}}" method="POST">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <button class="btn btn-primary d-block mb-3" data-target="#exampleModal">
-        Donate
-        </button>
+<div class="row">
+    <div class="col-sm-4">
+        <img src="{{pro_pic}}" class="profileimage" alt="profilepicture">
+        </br>
+    </div>
+    <div class="col sm-8">
+        <h1>Description</h1>
+    </div>
 </div>
-{% endfor %}
+<div class="row">
+    
+    {% for image in images %}
+    <div class="col-sm-4 mb-2 m-2 p-2 vw-80">
+        <img src="{{image.profile_image_url}}" class="postimage" alt="img_file" class="img-fluid feed-picture"/>
+        <br></br>
+        <form action="{{url_for('donations.new')}}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <button class="btn btn-primary d-block mb-3" data-target="#exampleModal">
+                Donate
+            </button>
+        </form>
+    </div>    
+    {% endfor %}  
+</div>
 
 {% endblock %}

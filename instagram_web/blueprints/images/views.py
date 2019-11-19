@@ -43,4 +43,3 @@ def create():
     else: 
         flash("Upload failed", "danger")
         return render_template('images/new.html')
-
