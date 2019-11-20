@@ -15,7 +15,14 @@ class User(UserMixin,BaseModel):
 
     @hybrid_property
     def profile_picture(self):
-      return Config.S3_LOCATION + self.profile_image_url
+        if self.profile_image_url: # if the user has a profile image, it will display the profile pic, 
+            return Config.S3_LOCATION + self.profile_image_url
+        else:
+            return "null" # else, it will return as nothing.
+            
+
+    def is_authenticated():
+        return True
 
 
     def validate(self):

@@ -32,4 +32,6 @@ def page_not_found(e):
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    users = User.select().order_by(User.id)
+
+    return render_template('home.html', users=users)

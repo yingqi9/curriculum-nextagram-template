@@ -26,9 +26,7 @@
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{{url_for('home', id=current_user.id)}}"
-        >NEXTAGRAM</a
-      >
+      <a class="navbar-brand" href="{{url_for('home')}}">NEXTAGRAM</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -43,7 +41,6 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          
           {% if current_user.is_authenticated %}
           <li class="nav-item">
             <a
