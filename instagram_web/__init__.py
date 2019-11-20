@@ -7,6 +7,10 @@ from instagram_web.blueprints.donations.views import donations_blueprint
 from instagram_web.util.google_oauth import oauth
 from flask_assets import Environment, Bundle
 from .util.assets import bundles
+# databases
+from models.user import User
+from models.images import Images
+
 
 assets = Environment(app)
 assets.register(bundles)
@@ -28,7 +32,4 @@ def page_not_found(e):
 
 @app.route("/")
 def home():
-    return render_template('home.html') 
-
-
-
+    return render_template('home.html')

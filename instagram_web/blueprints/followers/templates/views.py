@@ -7,4 +7,3 @@ followers_blueprint = Blueprint('followers',
 
 
 @followers_blueprint.route()
-
